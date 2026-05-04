@@ -44,8 +44,8 @@ export class Floor
 
         // Terrain data
         const terrainData = this.game.terrain.terrainNode(positionWorld.xz)
-        const slabHighColor = uniform(color('#ffcf8b'))
-        const slabLowColor = uniform(color('#a87762'))
+        const slabHighColor = uniform(color('#c8c0a8'))
+        const slabLowColor = uniform(color('#4a4840'))
         const slabTextureFrequency = uniform(0.175)
         const slabNoiseFrequency = uniform(0.03)
         const colorNode = Fn(() =>

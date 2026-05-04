@@ -26,8 +26,8 @@ export class Lightnings
         this.frequency = 2
         this.hitChances = 0
         this.currentSecond = Math.floor(Date.now() / 1000)
-        this.colorA = uniform(color('#ff4c00'))
-        this.colorB = uniform(color('#5180ff'))
+        this.colorA = uniform(color('#FCEE09'))
+        this.colorB = uniform(color('#00c8ff'))
         this.intensity = uniform(3)
         this.group = new THREE.Group()
         this.game.scene.add(this.group)

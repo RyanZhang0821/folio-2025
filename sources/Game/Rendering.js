@@ -37,10 +37,17 @@ export class Rendering
 
     async setRenderer()
     {
+        // WebGPU can mis-render or spam validation errors on some Chrome/GPU stacks.
+        // Use WebGL2 backend: `.env` → VITE_FORCE_WEBGL=1 or open the site with `#webgl` in the URL.
+        const forceWebGL =
+            import.meta.env.VITE_FORCE_WEBGL === '1' ||
+            import.meta.env.VITE_FORCE_WEBGL === 'true' ||
+            (typeof location !== 'undefined' && location.hash.match(/webgl/i))
+
         this.renderer = new THREE.WebGPURenderer({
             canvas: this.game.canvasElement,
             powerPreference: 'high-performance',
-            forceWebGL: false,
+            forceWebGL,
             antialias: this.game.viewport.pixelRatio < 2
         })
         this.renderer.setSize(this.game.viewport.width, this.game.viewport.height)
@@ -80,9 +87,9 @@ export class Rendering
 
         this.bloomPass = bloom(scenePassColor)
         this.bloomPass._nMips = this.game.quality.level === 0 ? 5 : 2
-        this.bloomPass.threshold.value = 1
-        this.bloomPass.strength.value = 0.25
-        this.bloomPass.smoothWidth.value = 1
+        this.bloomPass.threshold.value = 0.78
+        this.bloomPass.strength.value = 0.48
+        this.bloomPass.smoothWidth.value = 0.85
 
         this.cheapDOFPass = cheapDOF(renderOutput(scenePass))
 

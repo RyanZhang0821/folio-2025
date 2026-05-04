@@ -7,8 +7,8 @@ export class Fog
     {
         this.game = Game.getInstance()
         
-        this.colorA = uniform(color('#ff0000'))
-        this.colorB = uniform(color('#0000ff'))
+        this.colorA = uniform(color('#0a1510'))
+        this.colorB = uniform(color('#050808'))
         this.radialCenter = uniform(vec2(0, 0))
         this.radialStart = uniform(0)
         this.radialEnd = uniform(1)

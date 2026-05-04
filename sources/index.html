@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruno's</title>
+    <title>Ryan Zhang's Portfolio</title>
 
-    <meta name="description" content="Bruno Simon's creative portfolio">
+    <meta name="description" content="Ryan Zhang, UC San Diego Data Science student. A playful interactive 3D portfolio—explore projects and more in your browser.">
 
-    <meta itemprop="name" content="Bruno Simon">
-    <meta itemprop="description" content="Bruno Simon's creative portfolio">
-    <meta itemprop="image" content="https://bruno-simon.com/social/share-image.png?cb=a">
+    <meta itemprop="name" content="Ryan Zhang">
+    <meta itemprop="description" content="Ryan Zhang, UC San Diego Data Science student. A playful interactive 3D portfolio—explore projects and more in your browser.">
+    <meta itemprop="image" content="/social/share-image.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bruno Simon">
-    <meta name="twitter:description" content="Bruno Simon's creative portfolio">
-    <meta name="twitter:image" content="https://bruno-simon.com/social/share-image.png?cb=a">
+    <meta name="twitter:title" content="Ryan Zhang's Portfolio">
+    <meta name="twitter:description" content="Ryan Zhang, UC San Diego Data Science student. A playful interactive 3D portfolio—explore projects and more in your browser.">
+    <meta name="twitter:image" content="/social/share-image.png">
 
-    <meta property="og:site_name" content="Three.js Journey">
+    <meta property="og:site_name" content="Ryan Zhang">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bruno-simon.com/">
-    <meta property="og:title" content="Bruno Simon">
-    <meta property="og:description" content="Bruno Simon's creative portfolio">
-    <meta property="og:image" content="https://bruno-simon.com/social/share-image.png?cb=a">
+    <meta property="og:title" content="Ryan Zhang's Portfolio">
+    <meta property="og:description" content="Ryan Zhang, UC San Diego Data Science student. A playful interactive 3D portfolio—explore projects and more in your browser.">
+    <meta property="og:image" content="/social/share-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Nunito:wght@400;700;900&display=block" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Nunito:wght@400;700;900&family=Orbitron:wght@500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./style/index.styl">
 
@@ -33,23 +32,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" loading="lazy" />
     <link rel="shortcut icon" href="/favicons/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Bruno's" />
+    <meta name="apple-mobile-web-app-title" content="Ryan Zhang's Portfolio" />
     <link rel="manifest" href="/favicons/site.webmanifest" />
 
     <link rel="preload" href="/respawns/respawnsReferences-compressed.glb" as="fetch" crossorigin>
     <link rel="preload" href="/behindTheScene/stars.ktx" as="fetch" crossorigin>
     <link rel="preload" href="/intro/sound.ktx" as="fetch" crossorigin>
     <link rel="preload" href="/palette.ktx" as="fetch" crossorigin>
-    
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMSN30BQ5J"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', '%VITE_ANALYTICS_TAG%');
-    </script>
 </head>
 <body>
 
@@ -57,6 +46,8 @@
         <div class="font nunito" data-font="400 20px Nunito"> </div>
         <div class="font amatic-sc" data-font="700 20px 'Amatic SC'"> </div>
         <div class="font pally" data-font="500 20px Pally-Medium"> </div>
+        <div class="font rajdhani" data-font="600 20px Rajdhani"> </div>
+        <div class="font orbitron" data-font="700 18px Orbitron"> </div>
     </div>
     
     <div class="game">
@@ -224,11 +215,11 @@
                         <!-- Intro -->
                         <div class="js-content content home-content">
                             <div class="content-inner">
-                                <div class="title">Bruno's Home</div>
-                                <p class="text">Welcome!</p>
-                                <p class="text">My name is <strong>Bruno Simon</strong>, and I'm a <strong>creative developer</strong> (mostly for the web).</p>
-                                <p class="text">This is my portfolio. Please drive around to learn more about me and discover the many secrets of this world.</p>
-                                <p class="text">And don't break anything!</p>
+                                <div class="title">Ryan Zhang's Home</div>
+                                <p class="text">Why are you stalking me?!</p>
+                                <p class="text">My name is <strong>Ryan Zhang</strong>! I am currently a student at <strong>University of California San Diego</strong> majoring in <strong>Data Science</strong>.</p>
+                                <p class="text">This site is inspired by my goat Bruno Simon—you can explore it in 3D!</p>
+                                <p class="text">So see u next time?</p>
                             </div>
                         </div>
 
@@ -684,37 +675,39 @@
                                 <div class="title">Behind the scene</div>
                                 <p class="text">
                                     Thank you for visiting my portfolio!
-                                    <br />If you are curious about the stack and how I built this project, here’s everything you need to know.
+                                    <br />Huge thanks to <strong>Bruno Simon</strong> for open-sourcing this project and inspiring mine—I forked and personalized his folio; the stack below is still very much his world.
+                                    <br />If you’re curious about how this experience is built, here’s a concise overview.
                                 </p>
                                 
                                 <h2 class="title">Three.js</h2>
                                 <p class="text">
-                                    <a href="https://threejs.org" target="_blank" rel="noreferrer">Three.js</a> is the library I’m using to render this 3D world.
-                                    <br />It was created by <strong>mr.doob</strong> (<a href="https://x.com/mrdoob" target="_blank" rel="noreferrer">X</a>, <a href="http://github.com/mrdoob" target="_blank" rel="noreferrer">GitHub</a>), followed by hundreds of awesome developers, one of which being Sunag (<a href="https://x.com/sea3dformat" target="_blank" rel="noreferrer">X</a>, <a href="https://github.com/sunag" target="_blank" rel="noreferrer">GitHub</a>) who added <a href="https://github.com/mrdoob/three.js/wiki/Three.js-Shading-Language" target="_blank" rel="noreferrer">TSL</a>, enabling the use of both WebGL and WebGPU, making this portfolio possible.
+                                    <a href="https://threejs.org" target="_blank" rel="noreferrer">Three.js</a> renders this 3D world.
+                                    <br />It was created by <strong>mr.doob</strong> (<a href="https://x.com/mrdoob" target="_blank" rel="noreferrer">X</a>, <a href="http://github.com/mrdoob" target="_blank" rel="noreferrer">GitHub</a>), followed by hundreds of awesome developers, one of which being Sunag (<a href="https://x.com/sea3dformat" target="_blank" rel="noreferrer">X</a>, <a href="https://github.com/sunag" target="_blank" rel="noreferrer">GitHub</a>) who added <a href="https://github.com/mrdoob/three.js/wiki/Three.js-Shading-Language" target="_blank" rel="noreferrer">TSL</a>, enabling WebGL and WebGPU backends, which this portfolio uses.
                                 </p>
                                 
-                                <h2 class="title">Three.js Journey</h2>
+                                <h2 class="title">Learning Three.js</h2>
                                 <p class="text">
-                                    If you want to learn Three.js, I got you covered with this <a href="https://threejs-journey.com" target="_blank" rel="noreferrer">huge course</a>.
-                                    <br />It contains everything you need to start building awesome stuff with Three.js (and much more).
+                                    Bruno’s course <a href="https://threejs-journey.com" target="_blank" rel="noreferrer">Three.js Journey</a> is still one of the best places to learn if you’re new to the ecosystem.
+                                    <br />I’ll add my own learning notes and links here when I have something worth sharing—until then, that’s <strong>TBD</strong>.
                                 </p>
                                 
                                 <h2 class="title">Devlogs</h2>
                                 <p class="text">
-                                    I’ve been making devlogs since the very start of this portfolio and you can find them all on my <a href="https://www.youtube.com/playlist?list=PL5nApUt6Z8sTZxEsEMd8x89OCKCAAfNL0" target="_blank" rel="noreferrer">Youtube channel</a>.
+                                    The original build devlogs live on <a href="https://www.youtube.com/@BrunoSimon" target="_blank" rel="noreferrer">Bruno’s YouTube</a>.
+                                    <br />Mine: <strong>TBD</strong>.
                                 </p>
                                 
                                 <h2 class="title">Source code</h2>
                                 <p class="text">
-                                    The code is available on <a href="https://github.com/brunosimon/folio-2025" target="_blank" rel="noreferrer">GitHub</a> under <a href="https://choosealicense.com/licenses/mit/" target="_blank" rel="noreferrer">MIT license</a>. Even the Blender files are there, so have fun!
-                                    <br />For security reasons, I’m not sharing the server code, but the portfolio works without it.
+                                    Upstream project (MIT, Blender sources included): <a href="https://github.com/brunosimon/folio-2025" target="_blank" rel="noreferrer">github.com/brunosimon/folio-2025</a>.
+                                    <br />The original author does not ship the server code; this site runs fine without it.
+                                    <br /><strong>My public fork URL:</strong> TBD (I’ll drop the link here once the repo is public).
                                 </p>
                                 
                                 <h2 class="title">Musics</h2>
                                 <p class="text">
-                                    The music you hear was made especially for this portfolio by the awesome Kounine (<a href="https://linktr.ee/Kounine" target="_blank" rel="noreferrer">Linktree</a>).
-                                    <br />They are now under <a href="https://choosealicense.com/licenses/cc0-1.0/" target="_blank" rel="noreferrer">CC0 license</a>, meaning you can do whatever you want with them!
-                                    <br />Download them <a href="https://github.com/brunosimon/folio-2025/tree/main/static/sounds/musics" target="_blank" rel="noreferrer">here</a>.
+                                    Music for the original portfolio was made by Kounine (<a href="https://linktr.ee/Kounine" target="_blank" rel="noreferrer">Linktree</a>), now <a href="https://choosealicense.com/licenses/cc0-1.0/" target="_blank" rel="noreferrer">CC0</a>.
+                                    <br />Tracks in the upstream repo: <a href="https://github.com/brunosimon/folio-2025/tree/main/static/sounds/musics" target="_blank" rel="noreferrer">static/sounds/musics</a>.
                                 </p>
 
                                 <h2 class="title">Some more links</h2>
@@ -725,7 +718,7 @@
                                 </ul>
 
                                 <p class="text text-faded text-align-right">
-                                    — Bruno
+                                    — Ryan Zhang
                                 </p>
                             </div>
                         </div>
@@ -809,50 +802,6 @@
                                 Restart
                             </button>
 
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-
-            <!-- Discord -->
-            <div class="js-modal modal discord" data-name="discord">
-                <div class="container">
-                    <div class="content">
-                        <button class="js-close close">
-                            <img class="icon is-default" src="ui/close.svg" loading="lazy">
-                            <span class="icon is-xbox">A</span>
-                        </button>
-
-                        <div class="title"><img src="ui/discord.svg" loading="lazy"> Discord</div>
-
-                        <div class="items">
-                            <div class="item">
-                                <div class="title-container">
-                                    <div class="line left"></div>
-                                    <div class="title">Public server</div>
-                                    <div class="line right"></div>
-                                </div>
-                                <p>Come hang out with the community<span class="optional">, show us your projects and ask us anything</span>.</p>
-                                <div class="button-container">
-                                    <a href="https://discord.com/channels/769928116701233152/1445064878384480288" target="_blank" rel="noreferrer" class="button">
-                                        Join server
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="title-container">
-                                    <div class="line left"></div>
-                                    <div class="title">Private messages</div>
-                                    <div class="line right"></div>
-                                </div>
-                                <p>Contact me directly.<span class="optional"><br />I have to warn you, I try to answer everyone, but it might take a while.</span></p>
-                                <div class="button-container">
-                                    <a href="https://discord.com/users/202907325722263553" target="_blank" rel="noreferrer" class="button">
-                                        Start chating
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     
                     </div>

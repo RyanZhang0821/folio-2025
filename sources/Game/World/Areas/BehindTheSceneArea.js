@@ -51,7 +51,7 @@ export class BehindTheSceneArea extends Area
         const material = new THREE.MeshBasicMaterial({ wireframe: false })
         const effectVarying = varying(float())
         this.vehicleRelativePosition = uniform(vec2())
-        this.bloomColor = uniform(color('#6053ff'))
+        this.bloomColor = uniform(color('#FCEE09'))
         this.bloomIntensity = uniform(14)
         this.starsOffset = uniform(vec2(0))
 

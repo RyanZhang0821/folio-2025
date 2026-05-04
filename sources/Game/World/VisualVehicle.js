@@ -186,7 +186,7 @@ export class VisualVehicle
         // Abyssal
         {
             const material = new THREE.MeshBasicMaterial({ wireframe: false })
-            const fresnelColor = uniform(color('#6053ff'))
+            const fresnelColor = uniform(color('#FCEE09'))
             const fresnelIntensity = uniform(30)
             const starsIntensity = uniform(10)
 

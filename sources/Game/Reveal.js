@@ -15,7 +15,7 @@ export class Reveal
         this.position2Uniform = uniform(vec2(this.position.x, this.position.z))
         this.distance = uniform(0)
         this.thickness = uniform(0.05)
-        this.color = uniform(color('#e88eff'))
+        this.color = uniform(color('#FCEE09'))
         this.intensity = uniform(5.5)
         this.intensityMultiplier = 1
         this.sound = this.game.audio.register({

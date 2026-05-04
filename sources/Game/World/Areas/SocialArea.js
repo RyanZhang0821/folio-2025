@@ -24,6 +24,11 @@ export class SocialArea extends Area
         }
 
         this.setLinks()
+        if(socialData[0]?.name === 'Instagram')
+        {
+            this.hideXTwitterPedestalMeshes()
+            this.setInstagramGlyphOverFirstPedestal()
+        }
         this.setFans()
         this.setOnlyFans()
         this.setStatue()
@@ -53,7 +58,7 @@ export class SocialArea extends Area
                 {
                     if(link.url)
                         window.open(link.url, '_blank')
-                    else(link.modal)
+                    else if(link.modal)
                         this.game.modals.open(link.modal)
                 },
                 () =>
@@ -72,6 +77,109 @@ export class SocialArea extends Area
             
             i++
         }
+    }
+
+    /**
+     * First social slot is still the X mesh in the exported GLB. We draw an Instagram-style glyph
+     * on a plane and try to hide meshes whose names look like the old logo. A full icon swap needs Blender.
+     */
+    hideXTwitterPedestalMeshes()
+    {
+        const nameLooksLikeXTwitter = (name) =>
+        {
+            const n = name.toLowerCase()
+            return n.includes('twitter')
+                || n.includes('x_logo')
+                || n.includes('xlogo')
+                || /(^|_)x_/.test(n)
+                || n.includes('social_x')
+        }
+
+        this.model.traverse((child) =>
+        {
+            if(!child.isMesh || typeof child.name !== 'string')
+                return
+
+            const n = child.name.toLowerCase()
+
+            if(
+                nameLooksLikeXTwitter(child.name)
+                || n === 'x'
+                || n === 'twitter'
+            )
+                child.visible = false
+        })
+    }
+
+    setInstagramGlyphOverFirstPedestal()
+    {
+        const canvas = document.createElement('canvas')
+        const size = 256
+        canvas.width = size
+        canvas.height = size
+
+        const ctx = canvas.getContext('2d')
+        const cx = size * 0.5
+        const cy = size * 0.5
+        const grad = ctx.createRadialGradient(cx - 35, cy - 45, 8, cx, cy, 115)
+        grad.addColorStop(0, '#fdf497')
+        grad.addColorStop(0.12, '#fdf497')
+        grad.addColorStop(0.35, '#fd5949')
+        grad.addColorStop(0.55, '#d6249f')
+        grad.addColorStop(0.75, '#285AEB')
+        grad.addColorStop(1, '#285AEB')
+        ctx.fillStyle = grad
+        ctx.fillRect(0, 0, size, size)
+
+        ctx.strokeStyle = '#ffffff'
+        ctx.lineWidth = 16
+        const pad = 52
+        const rr = 38
+        ctx.beginPath()
+        ctx.roundRect(pad, pad, size - pad * 2, size - pad * 2, rr)
+        ctx.stroke()
+
+        ctx.fillStyle = '#ffffff'
+        ctx.beginPath()
+        ctx.arc(cx + 46, cy - 44, 14, 0, Math.PI * 2)
+        ctx.fill()
+
+        ctx.lineWidth = 12
+        ctx.beginPath()
+        ctx.arc(cx, cy, 46, 0, Math.PI * 2)
+        ctx.stroke()
+
+        const texture = new THREE.CanvasTexture(canvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.needsUpdate = true
+
+        const radius = 6
+        const i = 0
+        const angle = i * Math.PI / (socialData.length - 1)
+        const position = this.center.clone()
+        position.x += Math.cos(angle) * radius
+        position.y = 1.38
+        position.z -= Math.sin(angle) * radius
+
+        const plane = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.35, 1.35),
+            new THREE.MeshBasicMaterial({
+                map: texture,
+                transparent: true,
+                depthTest: true,
+                depthWrite: true,
+                side: THREE.DoubleSide,
+                polygonOffset: true,
+                polygonOffsetFactor: -1,
+                polygonOffsetUnits: -1,
+            })
+        )
+        plane.position.copy(position)
+        plane.renderOrder = 2
+        plane.name = 'instagramGlyphOverlay'
+        plane.lookAt(this.center.x, plane.position.y, this.center.z)
+
+        this.model.add(plane)
     }
 
     setFans()

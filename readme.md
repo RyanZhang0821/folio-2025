@@ -2,6 +2,10 @@
 
 ![image info](./static/social/share-image.png)
 
+## WebGPU console errors (drawIndexed / binding size zero)
+
+Some Chrome + GPU setups flood the console with WebGPU validation errors. Either open the dev URL with **`#webgl`** in the hash (e.g. `http://localhost:5173/#webgl`) or set **`VITE_FORCE_WEBGL=1`** in `.env` and restart `npm run dev` to use the **WebGL2** backend instead.
+
 ## Setup
 
 Create `.env` file based on `.env.example`
@@ -9,8 +13,8 @@ Create `.env` file based on `.env.example`
 Download and install [Node.js](https://nodejs.org/en/download/) then run this followed commands:
 
 ``` bash
-# Install dependencies
-npm install --force
+# Install dependencies (legacy-peer-deps is set in .npmrc for Vite 7 + vite-plugin-restart; --force still works)
+npm install
 
 # Serve at localhost:1234
 npm run dev

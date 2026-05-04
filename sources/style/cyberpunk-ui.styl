@@ -1,0 +1,253 @@
+// Cyberpunk 2077–inspired layer: yellow accent, dark teal/black, chamfered tech UI.
+// Imported last; overrides earlier .styl. 3D colors are tuned separately in Game/.
+
+$cp-yellow = #FCEE09
+$cp-yellow-dim = alpha($cp-yellow, 0.45)
+$cp-yellow-glow = alpha($cp-yellow, 0.35)
+$cp-black = #050505
+$cp-teal-deep = #0a1512
+$cp-teal = #0f2622
+$cp-teal-panel = #122820
+$cp-text = #f2f5f0
+$cp-text-dim = #8a9a92
+$cp-chrome-r = #ff0040
+$cp-chrome-b = #00c8ff
+$cp-grid = alpha($cp-yellow, 0.045)
+
+$chamfer = unquote('polygon(12px 0%, calc(100% - 12px) 0%, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0% calc(100% - 12px), 0% 12px)')
+
+$grad-panel = linear-gradient(165deg, $cp-teal-panel 0%, $cp-teal-deep 55%, $cp-black 100%)
+$grad-trigger = linear-gradient(145deg, #1a2218 0%, #0d1814 50%, #0a0f0c 100%)
+
+html
+    color $cp-text
+    background $cp-black
+    background-image \
+        linear-gradient(0deg, transparent 23px, $cp-grid 24px), \
+        linear-gradient(90deg, transparent 23px, $cp-grid 24px), \
+        radial-gradient(ellipse 90% 60% at 50% 0%, alpha($cp-yellow, 0.07), transparent 50%), \
+        radial-gradient(ellipse 80% 50% at 100% 100%, alpha($cp-teal, 0.5), transparent 55%)
+    background-size 40px 40px, 40px 40px, 100% 100%, 100% 100%
+
+html
+body
+.game
+.menu
+.modals
+    color $cp-text
+    font-family "Rajdhani", "Nunito", sans-serif
+    font-weight 500
+
+.title
+    font-family "Orbitron", sans-serif
+    font-weight 800
+    letter-spacing 0.08em
+    text-transform uppercase
+    font-size 2rem
+    color $cp-yellow
+    text-shadow \
+        2px 0 alpha($cp-chrome-r, 0.45), \
+        -2px 0 alpha($cp-chrome-b, 0.45), \
+        0 0 24px $cp-yellow-glow, \
+        0 0 2px alpha($cp-yellow, 0.9)
+
+.text
+    color $cp-text
+    a
+        color $cp-yellow
+        text-decoration none
+        border-bottom 1px solid $cp-yellow-dim
+        &:hover
+            color lighten($cp-yellow, 12%)
+            border-bottom-color $cp-yellow
+
+.text-danger
+    color #ff6a6a
+
+.text-faded
+    opacity 0.75
+    color $cp-text-dim
+
+.button
+    border-radius 0
+    clip-path $chamfer
+    border 2px solid $cp-yellow-dim
+    color $cp-yellow
+    background alpha($cp-black, 0.65)
+    letter-spacing 0.12em
+    font-family "Orbitron", sans-serif
+    font-weight 700
+    font-size 0.7rem
+    text-transform uppercase
+    box-shadow inset 0 0 0 1px alpha($cp-black, 0.4)
+    &.is-success
+        color #c8f090
+        border-color alpha(#c8f090, 0.65)
+        background alpha(#0f1a0c, 0.75)
+    &.is-danger
+        color #ff8a8a
+        border-color alpha(#ff8a8a, 0.55)
+        background alpha(#1a0a0a, 0.75)
+    html:not(.is-mode-touch) &:not(.is-disabled):hover
+        border-color $cp-yellow
+        color lighten($cp-yellow, 8%)
+        box-shadow 0 0 20px $cp-yellow-glow, inset 0 0 0 1px alpha($cp-yellow, 0.15)
+
+.input-group
+    > *
+        border-color alpha($cp-yellow, 0.22)
+        border-radius 0
+    >:first-child
+        border-radius 0
+        clip-path polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px)
+    &.is-valide
+        button
+            border-color $cp-yellow
+            color $cp-yellow
+            &.has-icon svg *
+                stroke $cp-yellow !important
+    .submit
+        border-color alpha($cp-yellow, 0.35)
+        color $cp-text-dim
+        &.has-icon svg *
+            stroke $cp-text-dim !important
+
+.menu-trigger .button-inner,
+.map-trigger .button-inner
+    background $grad-trigger
+    box-shadow inset 0 0 28px alpha($cp-yellow, 0.08)
+    clip-path $chamfer
+    &::after
+        border-color $cp-yellow-dim
+        opacity 0.65
+    .icon .line
+        background $cp-yellow
+        box-shadow 0 0 8px $cp-yellow-glow
+
+.menu
+    *::selection
+        color $cp-black !important
+        background-color $cp-yellow !important
+
+    .previews,
+    .contents,
+    .contents .content
+        background $grad-panel
+
+    .previews::after,
+    .navigation .item .button-inner::after
+        border-color $cp-yellow-dim
+        opacity 0.55
+
+    .navigation .item .button-inner
+        background $grad-panel
+        clip-path $chamfer
+
+    .navigation .item.is-active .button-inner
+        background linear-gradient(165deg, alpha($cp-yellow, 0.18) 0%, $cp-teal-panel 50%, $cp-teal-deep 100%)
+        box-shadow inset 0 0 24px alpha($cp-yellow, 0.12)
+        .icon-container
+            color $cp-yellow
+            text-shadow 0 0 12px $cp-yellow-glow
+
+    .navigation .item .icon-container
+        color $cp-yellow-dim
+
+    .contents .content
+        position relative
+        &::before
+            content ''
+            position absolute
+            top 14px
+            left 14px
+            width 22px
+            height 22px
+            border-top 2px solid alpha($cp-yellow, 0.5)
+            border-left 2px solid alpha($cp-yellow, 0.5)
+            pointer-events none
+            z-index 1
+        &::after
+            content ''
+            position absolute
+            bottom 14px
+            right 14px
+            width 22px
+            height 22px
+            border-bottom 2px solid alpha($cp-yellow, 0.5)
+            border-right 2px solid alpha($cp-yellow, 0.5)
+            pointer-events none
+            z-index 1
+
+.modals
+    *::selection
+        color $cp-black !important
+        background-color $cp-yellow !important
+
+    .content
+        position relative
+        background $grad-panel
+        border 1px solid alpha($cp-yellow, 0.28)
+        border-radius 0
+        box-shadow 0 0 48px alpha($cp-yellow, 0.06), 0 0 100px alpha($cp-teal, 0.35)
+        &::before
+            content ''
+            position absolute
+            top 14px
+            left 14px
+            width 22px
+            height 22px
+            border-top 2px solid alpha($cp-yellow, 0.5)
+            border-left 2px solid alpha($cp-yellow, 0.5)
+            pointer-events none
+            z-index 1
+        &::after
+            content ''
+            position absolute
+            bottom 14px
+            right 14px
+            width 22px
+            height 22px
+            border-bottom 2px solid alpha($cp-yellow, 0.5)
+            border-right 2px solid alpha($cp-yellow, 0.5)
+            pointer-events none
+            z-index 1
+
+.map .map-container
+    background $grad-panel
+    border 1px solid alpha($cp-yellow, 0.25)
+    border-radius 0
+
+.touch-buttons .list
+    font-family "Orbitron", sans-serif
+    font-weight 800
+    letter-spacing 0.1em
+    color $cp-yellow
+    text-shadow 0 0 18px $cp-yellow-glow
+
+.touch-buttons .overlay
+    background linear-gradient(transparent, alpha($cp-black, 0.94))
+
+.tabs .tabs-navigation .tab
+    .active-background
+        background linear-gradient(to top, alpha($cp-yellow, 0.12), alpha($cp-teal, 0.35))
+        border 1px solid alpha($cp-yellow, 0.22)
+        border-radius 0
+    .label
+        font-family "Orbitron", sans-serif
+        font-size 11px
+        letter-spacing 0.14em
+        text-transform uppercase
+
+.notifications .item
+    background $grad-panel
+    border 1px solid alpha($cp-yellow, 0.22)
+    border-radius 0
+
+.tooltips .tooltip-inner
+    border-color $cp-yellow-dim
+    background alpha($cp-teal-deep, 0.97)
+    color $cp-text
+    border-radius 0
+
+.achievements-content .rewards .reward .tooltip
+    color $cp-text
